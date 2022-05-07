@@ -1,0 +1,19 @@
+{
+  "slug": "shortwavaudio",
+  "name": "Shortwav Audio",
+  "version": "2.0.0",
+  "license": "GPL-3.0-or-later",
+  "brand": "Shortwav Audio",
+  "author": "Stephane P. Pericat",
+  "authorEmail": "shortwavaudio@gmail.com",
+  "modules": [
+    {
+      "slug": "Test",
+      "name": "Test",
+      "description": "Test module",
+      "tags": [
+        "Utility"
+      ]
+    }
+  ]
+}
