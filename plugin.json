@@ -8,6 +8,14 @@
   "authorEmail": "shortwavaudio@gmail.com",
   "modules": [
     {
+      "slug": "Playground",
+      "name": "Playground",
+      "description": "Vult playground",
+      "tags": [
+        "Utility"
+      ]
+    },
+    {
       "slug": "Test",
       "name": "Test",
       "description": "Test module",
