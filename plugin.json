@@ -14,6 +14,26 @@
       "tags": [
         "Utility"
       ]
+    },
+    {
+      "slug": "Unity",
+      "name": "Unity",
+      "description": "Semi modular synth",
+      "tags": [
+        "Clock generator",
+        "Envelope generator",
+        "Function generator",
+        "Low pass gate",
+        "Mixer",
+        "Noise",
+        "Quad",
+        "Random",
+        "Sample and hold",
+        "Slew limiter",
+        "VCA",
+        "VCF",
+        "VCO"
+      ]
     }
   ]
 }
