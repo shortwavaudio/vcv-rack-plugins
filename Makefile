@@ -21,7 +21,7 @@ DISTRIBUTABLES += $(wildcard LICENSE*)
 include $(RACK_DIR)/arch.mk
 include vult.inc
 
-VULT_SRC = $(wildcard src/vult/*.vult)
+VULT_SRC = $(wildcard src/vult/**/*.vult)
 VULT_ENGINE_OUT = $(wildcard src/engine.*)
 
 $(VULT_ENGINE_OUT): $(VULT_SRC)

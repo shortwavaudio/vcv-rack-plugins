@@ -1,0 +1,1 @@
+vultc -ccode src/vult/**/*.vult -o src/engine -force-write
