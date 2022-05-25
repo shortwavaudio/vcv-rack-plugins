@@ -18,5 +18,14 @@ SOURCES += $(wildcard src/*.cpp)
 DISTRIBUTABLES += res
 DISTRIBUTABLES += $(wildcard LICENSE*)
 
+include $(RACK_DIR)/arch.mk
+include vult.inc
+
+VULT_SRC = $(wildcard src/vult/**/*.vult)
+VULT_ENGINE_OUT = $(wildcard src/engine.*)
+
+$(VULT_ENGINE_OUT): $(VULT_SRC)
+	$(VULT_CMD) -ccode $(VULT_SRC) -o src/engine -force-write
+
 # Include the Rack plugin Makefile framework
 include $(RACK_DIR)/plugin.mk
