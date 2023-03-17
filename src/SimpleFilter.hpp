@@ -30,10 +30,12 @@ struct SimpleFilter : Module
 
   SimpleFilter() {
     config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-    configParam(FREQ_PARAM, 0.f, 10.f, 5.f);
+    configParam(FREQ_PARAM, .001f, .01f, .005f);
   }
 
   void process(const ProcessArgs &args) override;
+
+  dsp::TRCFilter<float> filter;
 };
 
 struct SimpleFilterWidget : ModuleWidget
