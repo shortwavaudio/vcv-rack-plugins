@@ -14,6 +14,14 @@
       "tags": [
         "Blank"
       ]
+    },
+    {
+      "slug": "SimpleFilter",
+      "name": "Simple Filter",
+      "description": "A simple filter",
+      "tags": [
+        "VCF"
+      ]
     }
   ]
 }
