@@ -18,7 +18,6 @@ struct SimpleFilter : Module
 
   enum OutputIds
   {
-    HP_OUTPUT,
     LP_OUTPUT,
     NUM_OUTPUTS
   };
@@ -30,7 +29,7 @@ struct SimpleFilter : Module
 
   SimpleFilter() {
     config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-    configParam(FREQ_PARAM, .001f, .01f, .005f);
+    configParam(FREQ_PARAM, .0001f, .02f, .001f);
   }
 
   void process(const ProcessArgs &args) override;
@@ -52,7 +51,6 @@ struct SimpleFilterWidget : ModuleWidget
 
     addParam(createParam<RoundSmallBlackKnob>(Vec(10.f, 170.f), module, SimpleFilter::FREQ_PARAM));
 
-    addOutput(createOutput<PJ301MPort>(Vec(10.f, 280.f), module, SimpleFilter::HP_OUTPUT));
     addOutput(createOutput<PJ301MPort>(Vec(10.f, 310.f), module, SimpleFilter::LP_OUTPUT));
   }
 };

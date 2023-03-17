@@ -8,7 +8,6 @@ void SimpleFilter::process(const ProcessArgs &args)
   filter.setCutoffFreq(freq);
   filter.process(signal);
 
-  outputs[HP_OUTPUT].setVoltage(filter.highpass());
   outputs[LP_OUTPUT].setVoltage(filter.lowpass());
 }
 
