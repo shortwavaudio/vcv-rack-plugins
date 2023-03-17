@@ -6,7 +6,9 @@ struct SimpleFilter : Module
 {
   enum ParamIds
   {
+    // GAIN_PARAM,
     FREQ_PARAM,
+    Q_PARAM,
     NUM_PARAMS
   };
 
@@ -29,12 +31,14 @@ struct SimpleFilter : Module
 
   SimpleFilter() {
     config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-    configParam(FREQ_PARAM, .0001f, .02f, .001f);
+    // configParam(GAIN_PARAM, 1.f, 100.f, 5.f);
+    configParam(FREQ_PARAM, .00001f, 5000.f, 2500.f);
+    configParam(Q_PARAM, .001f, 1.f, .5f);
   }
 
   void process(const ProcessArgs &args) override;
 
-  dsp::TRCFilter<float> filter;
+  dsp::TBiquadFilter<float> bFilter;
 };
 
 struct SimpleFilterWidget : ModuleWidget
@@ -50,6 +54,8 @@ struct SimpleFilterWidget : ModuleWidget
     addInput(createInput<PJ301MPort>(Vec(10.f, 20.f), module, SimpleFilter::CV_INPUT));
 
     addParam(createParam<RoundSmallBlackKnob>(Vec(10.f, 170.f), module, SimpleFilter::FREQ_PARAM));
+    addParam(createParam<RoundSmallBlackKnob>(Vec(10.f, 200.f), module, SimpleFilter::Q_PARAM));
+    // addParam(createParam<RoundSmallBlackKnob>(Vec(10.f, 250.f), module, SimpleFilter::GAIN_PARAM));
 
     addOutput(createOutput<PJ301MPort>(Vec(10.f, 310.f), module, SimpleFilter::LP_OUTPUT));
   }
