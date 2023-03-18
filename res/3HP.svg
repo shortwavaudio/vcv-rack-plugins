@@ -1,1 +1,25 @@
-<?xml version="1.0" standalone="no"?><!-- Generator: Gravit.io --><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="isolation:isolate" viewBox="0 0 45 380" width="45" height="380"><defs><clipPath id="_clipPath_NaMXsv9ZRgHJiuqKNPFEhat6dHmGqmiJ"><rect width="45" height="380"/></clipPath></defs><g clip-path="url(#_clipPath_NaMXsv9ZRgHJiuqKNPFEhat6dHmGqmiJ)"><rect x="0" y="0" width="45" height="380" transform="matrix(1,0,0,1,0,0)" fill="rgb(235,235,235)"/></g></svg>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Created with Vectornator (http://vectornator.io/) -->
+<svg stroke-miterlimit="10" style="fill-rule:nonzero;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" version="1.1" viewBox="0 0 45 380" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+<path d="M0 0L45 0L45 0L45 380L45 380L0 380L0 380L0 0L0 0Z" id="Fill"/>
+</defs>
+<g id="Untitled">
+<g opacity="1">
+<use fill="#f2f2f2" fill-rule="nonzero" opacity="1" stroke="none" xlink:href="#Fill"/>
+<clipPath id="ClipPath">
+<use xlink:href="#Fill"/>
+</clipPath>
+<g clip-path="url(#ClipPath)">
+<path d="M0 0L45 0L45 0L45 380L45 380L0 380L0 380L0 0L0 0Z" fill="#f2f2f2" fill-rule="nonzero" opacity="1" stroke="none"/>
+</g>
+</g>
+<g opacity="1">
+<path d="M20.8264 373.55L13.9619 373.55L7.09741 355.192L13.9619 355.192L20.8264 373.55Z" fill="#151515" fill-rule="nonzero" opacity="1" stroke="none"/>
+<path d="M25.4559 373.55L23.0613 373.55L16.1968 355.192L23.0613 355.192L27.6829 367.552L25.4559 373.55Z" fill="#151515" fill-rule="nonzero" opacity="1" stroke="none"/>
+<path d="M35.6449 364.659L39.185 355.192L32.3205 355.192L28.7813 364.657L35.6449 364.659Z" fill="#151515" fill-rule="nonzero" opacity="1" stroke="none"/>
+<path d="M29.8485 352.703L23.3081 352.703C23.3081 352.703 23.2595 349.173 18.3062 349.173C13.353 349.173 13.4644 353.498 13.4644 353.498L6.92396 353.498C6.92396 353.498 6.67915 342.964 18.254 342.964C29.8289 342.964 29.8485 352.703 29.8485 352.703Z" fill="#151515" fill-rule="nonzero" opacity="1" stroke="none"/>
+</g>
+</g>
+</svg>
