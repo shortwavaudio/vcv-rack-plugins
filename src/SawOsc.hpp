@@ -13,6 +13,7 @@ struct SawOsc : Module
 
   enum InputIds
   {
+    CV_INPUT,
     NUM_INPUTS
   };
 
@@ -48,6 +49,8 @@ struct SawOscWidget : ModuleWidget
 
     addChild(createWidget<ScrewSilver>(Vec(0, 0)));
     addChild(createWidget<ScrewSilver>(Vec(box.size.x - 1 * RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
+
+    addInput(createInput<PJ301MPort>(Vec(10.f, 20.f), module, SawOsc::CV_INPUT));
 
     addParam(createParam<RoundSmallBlackKnob>(Vec(10.f, 170.f), module, SawOsc::FREQ_PARAM));
 
