@@ -19,7 +19,10 @@ struct QuadVco : Module
 
   enum OutputIds
   {
+    SAW_OUTPUT,
     SINE_OUTPUT,
+    SQUARE_OUTPUT,
+    TRIANGLE_OUTPUT,
     NUM_OUTPUTS
   };
 
@@ -45,7 +48,7 @@ struct QuadVcoWidget : ModuleWidget
   QuadVcoWidget(QuadVco *module)
   {
     setModule(module);
-    setPanel(APP->window->loadSvg(asset::plugin(pluginInstance, "res/3HP.svg")));
+    setPanel(APP->window->loadSvg(asset::plugin(pluginInstance, "res/6HP.svg")));
 
     addChild(createWidget<ScrewSilver>(Vec(0, 0)));
     addChild(createWidget<ScrewSilver>(Vec(box.size.x - 1 * RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
@@ -54,6 +57,9 @@ struct QuadVcoWidget : ModuleWidget
 
     addParam(createParam<RoundSmallBlackKnob>(Vec(10.f, 170.f), module, QuadVco::PWM_PARAM));
 
-    addOutput(createOutput<PJ301MPort>(Vec(10.f, 310.f), module, QuadVco::SINE_OUTPUT));
+    addOutput(createOutput<PJ301MPort>(Vec(15.f, 280.f), module, QuadVco::SINE_OUTPUT));
+    addOutput(createOutput<PJ301MPort>(Vec(45.f, 280.f), module, QuadVco::SQUARE_OUTPUT));
+    addOutput(createOutput<PJ301MPort>(Vec(15.f, 310.f), module, QuadVco::SAW_OUTPUT));
+    addOutput(createOutput<PJ301MPort>(Vec(45.f, 310.f), module, QuadVco::TRIANGLE_OUTPUT));
   }
 };
