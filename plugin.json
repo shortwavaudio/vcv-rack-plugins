@@ -30,6 +30,14 @@
       "tags": [
         "VCO"
       ]
+    },
+    {
+      "slug": "TriOsc",
+      "name": "Triangle Osc",
+      "description": "A triangle oscillator",
+      "tags": [
+        "VCO"
+      ]
     }
   ]
 }

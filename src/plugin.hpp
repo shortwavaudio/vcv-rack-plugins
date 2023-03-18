@@ -11,3 +11,4 @@ extern Plugin *pluginInstance;
 extern Model *modelBlank;
 extern Model *modelSawOsc;
 extern Model *modelSimpleFilter;
+extern Model *modelTriOsc;
