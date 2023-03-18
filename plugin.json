@@ -22,6 +22,14 @@
       "tags": [
         "VCF"
       ]
+    },
+    {
+      "slug": "SawOsc",
+      "name": "Saw Osc",
+      "description": "A saw oscillator",
+      "tags": [
+        "VCO"
+      ]
     }
   ]
 }

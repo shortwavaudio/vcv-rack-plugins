@@ -10,6 +10,7 @@ void init(Plugin *p) {
 	// Add modules here
 	// p->addModel(modelMyModule);
 	 p->addModel(modelBlank);
+	 p->addModel(modelSawOsc);
 	 p->addModel(modelSimpleFilter);
 
 	// Any other plugin initialization may go here.
