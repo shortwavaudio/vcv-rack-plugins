@@ -24,17 +24,9 @@
       ]
     },
     {
-      "slug": "SawOsc",
-      "name": "Saw Osc",
-      "description": "A saw oscillator",
-      "tags": [
-        "VCO"
-      ]
-    },
-    {
-      "slug": "TriOsc",
-      "name": "Triangle Osc",
-      "description": "A triangle oscillator",
+      "slug": "QuadVco",
+      "name": "Quad VCO",
+      "description": "4 VCO's in one",
       "tags": [
         "VCO"
       ]
