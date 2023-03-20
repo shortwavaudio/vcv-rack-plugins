@@ -38,6 +38,14 @@
       "tags": [
         "VCF"
       ]
+    },
+    {
+      "slug": "Envelope",
+      "name": "Envelope",
+      "description": "Adsr",
+      "tags": [
+        "Envelope generator"
+      ]
     }
   ]
 }

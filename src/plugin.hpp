@@ -9,6 +9,7 @@ extern Plugin *pluginInstance;
 // Declare each Model, defined in each module source file
 // extern Model *modelMyModule;
 extern Model *modelBlank;
+extern Model *modelEnvelope;
 extern Model *modelQuadVco;
 extern Model *modelSimpleFilter;
 extern Model *modelSvFilter;
