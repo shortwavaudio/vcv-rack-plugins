@@ -11,3 +11,4 @@ extern Plugin *pluginInstance;
 extern Model *modelBlank;
 extern Model *modelQuadVco;
 extern Model *modelSimpleFilter;
+extern Model *modelSvFilter;

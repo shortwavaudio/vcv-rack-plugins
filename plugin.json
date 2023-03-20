@@ -30,6 +30,14 @@
       "tags": [
         "VCO"
       ]
+    },
+    {
+      "slug": "SvFilter",
+      "name": "SV Filter",
+      "description": "A state variable filter with soft saturation",
+      "tags": [
+        "VCF"
+      ]
     }
   ]
 }
