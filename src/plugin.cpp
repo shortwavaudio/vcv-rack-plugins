@@ -10,10 +10,10 @@ void init(Plugin *p) {
 	// Add modules here
 	// p->addModel(modelMyModule);
 	 p->addModel(modelBlank);
-	 p->addModel(modelEnvelope);
+	//  p->addModel(modelEnvelope);
 	 p->addModel(modelQuadVco);
-	 p->addModel(modelSimpleFilter);
-	 p->addModel(modelSvFilter);
+	//  p->addModel(modelSimpleFilter);
+	//  p->addModel(modelSvFilter);
 
 	// Any other plugin initialization may go here.
 	// As an alternative, consider lazy-loading assets and lookup tables when your module is created to reduce startup times of Rack.
