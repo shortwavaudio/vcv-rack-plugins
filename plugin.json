@@ -14,38 +14,6 @@
       "tags": [
         "Blank"
       ]
-    },
-    {
-      "slug": "SimpleFilter",
-      "name": "Simple Filter",
-      "description": "A simple filter",
-      "tags": [
-        "VCF"
-      ]
-    },
-    {
-      "slug": "QuadVco",
-      "name": "Quad VCO",
-      "description": "4 VCO's in one",
-      "tags": [
-        "VCO"
-      ]
-    },
-    {
-      "slug": "SvFilter",
-      "name": "SV Filter",
-      "description": "A state variable filter with soft saturation",
-      "tags": [
-        "VCF"
-      ]
-    },
-    {
-      "slug": "Envelope",
-      "name": "Envelope",
-      "description": "Adsr",
-      "tags": [
-        "Envelope generator"
-      ]
     }
   ]
 }
