@@ -17,6 +17,7 @@ struct Tempo : Module
 
   enum OutputIds
   {
+    PHASE_OUTPUT,
     TRIGGER_OUTPUT,
     NUM_OUTPUTS
   };
@@ -59,6 +60,7 @@ struct TempoWidget : ModuleWidget
 
     addParam(createParam<RoundSmallBlackKnob>(Vec(10.f, 50.f), module, Tempo::BPM_PARAM));
 
+    addOutput(createOutput<PJ301MPort>(Vec(10.f, 280.f), module, Tempo::PHASE_OUTPUT));
     addOutput(createOutput<PJ301MPort>(Vec(10.f, 310.f), module, Tempo::TRIGGER_OUTPUT));
   }
 };

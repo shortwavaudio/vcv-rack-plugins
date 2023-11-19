@@ -43,7 +43,7 @@ void Tempo::process(const ProcessArgs &args)
     resetTimer();
   }
 
-  outputs[TRIGGER_OUTPUT].setVoltage(getPhase());
+  outputs[PHASE_OUTPUT].setVoltage(getPhase());
 }
 
 Model *modelTempo = createModel<Tempo, TempoWidget>("Tempo");
