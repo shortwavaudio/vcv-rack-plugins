@@ -7,7 +7,7 @@ float Tempo::getPhase()
 
 bool Tempo::hasPeaked()
 {
-  return timer.getTime() > frequency;
+  return timer.getTime() >= frequency;
 }
 
 void Tempo::incrementTimer(float deltaTime)
