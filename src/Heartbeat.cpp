@@ -41,9 +41,11 @@ void Heartbeat::process(const ProcessArgs &args)
 
   if(hasPeaked()) {
     resetTimer();
+    pulse.trigger();
   }
 
   outputs[PHASE_OUTPUT].setVoltage(getPhase());
+  outputs[TRIGGER_OUTPUT].setVoltage(pulse.process(args.sampleTime) ? 10.f : 0.f);
 }
 
 Model *modelHeartbeat = createModel<Heartbeat, HeartbeatWidget>("Heartbeat");

@@ -38,6 +38,7 @@ struct Heartbeat : Module
   float bpm = 120.f;
   float frequency = 0.5f;
 
+  dsp::PulseGenerator pulse;
   dsp::Timer timer;
 
   float getPhase();
