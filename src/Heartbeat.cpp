@@ -1,36 +1,36 @@
-#include "Tempo.hpp"
+#include "Heartbeat.hpp"
 
-float Tempo::getPhase()
+float Heartbeat::getPhase()
 {
   return timer.getTime() * (10.f / frequency);
 }
 
-bool Tempo::hasPeaked()
+bool Heartbeat::hasPeaked()
 {
   return timer.getTime() >= frequency;
 }
 
-void Tempo::incrementTimer(float deltaTime)
+void Heartbeat::incrementTimer(float deltaTime)
 {
   timer.process(deltaTime);
 }
 
-void Tempo::resetTimer()
+void Heartbeat::resetTimer()
 {
   timer.reset();
 }
 
-void Tempo::setBpm(float bpmValue)
+void Heartbeat::setBpm(float bpmValue)
 {
   bpm = bpmValue;
 }
 
-void Tempo::setFrequency()
+void Heartbeat::setFrequency()
 {
   frequency = 60.f / bpm;
 }
 
-void Tempo::process(const ProcessArgs &args)
+void Heartbeat::process(const ProcessArgs &args)
 {
   if(params[BPM_PARAM].getValue() != bpm) {
     setBpm(params[BPM_PARAM].getValue());
@@ -46,4 +46,4 @@ void Tempo::process(const ProcessArgs &args)
   outputs[PHASE_OUTPUT].setVoltage(getPhase());
 }
 
-Model *modelTempo = createModel<Tempo, TempoWidget>("Tempo");
+Model *modelHeartbeat = createModel<Heartbeat, HeartbeatWidget>("Heartbeat");

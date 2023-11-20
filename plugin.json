@@ -16,8 +16,8 @@
       ]
     },
     {
-      "slug": "Tempo",
-      "name": "Tempo",
+      "slug": "Heartbeat",
+      "name": "Heartbeat",
       "description": "A minimalist clock",
       "tags": [
         "Clock generator"
