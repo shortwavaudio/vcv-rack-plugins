@@ -7,6 +7,7 @@ struct Heartbeat : Module
   enum ParamIds
   {
     BPM_PARAM,
+    PLAY_PARAM,
     NUM_PARAMS
   };
 
@@ -24,12 +25,14 @@ struct Heartbeat : Module
 
   enum LightIds
   {
+    PLAY_LIGHT,
     NUM_LIGHTS
   };
 
   Heartbeat() {
     config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
     configParam(BPM_PARAM, 0.f, 240.f, bpm, "BPM", "bpm");
+    configParam(PLAY_PARAM, 0.f, 1.f, 0.f, "ON/OFF");
     paramQuantities[BPM_PARAM]->snapEnabled = true;
   }
 
@@ -37,7 +40,9 @@ struct Heartbeat : Module
 
   float bpm = 120.f;
   float frequency = 0.5f;
+  bool isActive = false;
 
+  dsp::SchmittTrigger playTrigger;
   dsp::PulseGenerator pulse;
   dsp::Timer timer;
 
@@ -60,7 +65,9 @@ struct HeartbeatWidget : ModuleWidget
     addChild(createWidget<ScrewSilver>(Vec(0, 0)));
     addChild(createWidget<ScrewSilver>(Vec(box.size.x - 1 * RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
 
-    addParam(createParam<RoundSmallBlackKnob>(Vec(10.f, 50.f), module, Heartbeat::BPM_PARAM));
+    addParam(createLightParam<VCVLightLatch<MediumSimpleLight<GreenLight>>>(Vec(13.f, 20.f), module, Heartbeat::PLAY_PARAM, Heartbeat::PLAY_LIGHT));
+
+    addParam(createParam<RoundSmallBlackKnob>(Vec(11.f, 50.f), module, Heartbeat::BPM_PARAM));
 
     addOutput(createOutput<PJ301MPort>(Vec(10.f, 280.f), module, Heartbeat::PHASE_OUTPUT));
     addOutput(createOutput<PJ301MPort>(Vec(10.f, 310.f), module, Heartbeat::TRIGGER_OUTPUT));

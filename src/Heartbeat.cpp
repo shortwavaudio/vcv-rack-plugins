@@ -32,20 +32,30 @@ void Heartbeat::setFrequency()
 
 void Heartbeat::process(const ProcessArgs &args)
 {
+  isActive = !!params[PLAY_PARAM].getValue();
+
   if(params[BPM_PARAM].getValue() != bpm) {
     setBpm(params[BPM_PARAM].getValue());
     setFrequency();
   }
 
-  incrementTimer(args.sampleTime);
+  if(playTrigger.process(params[PLAY_PARAM].getValue())) {
+    resetTimer();
+    pulse.reset();
+  }
 
+  if(isActive) {
+    incrementTimer(args.sampleTime);
+  }
+  
   if(hasPeaked()) {
     resetTimer();
     pulse.trigger();
   }
 
-  outputs[PHASE_OUTPUT].setVoltage(getPhase());
-  outputs[TRIGGER_OUTPUT].setVoltage(pulse.process(args.sampleTime) ? 10.f : 0.f);
+  outputs[PHASE_OUTPUT].setVoltage(isActive ? getPhase(): 0.f);
+  outputs[TRIGGER_OUTPUT].setVoltage(isActive ? pulse.process(args.sampleTime) ? 10.f : 0.f : 0.f);
+  lights[PLAY_LIGHT].setBrightness(isActive ? 10.f: 0.f);
 }
 
 Model *modelHeartbeat = createModel<Heartbeat, HeartbeatWidget>("Heartbeat");
