@@ -22,7 +22,7 @@ void Heartbeat::resetTimer()
 
 void Heartbeat::setBpm(float bpmValue)
 {
-  bpm = bpmValue;
+  bpm = floorf(bpmValue);
 }
 
 void Heartbeat::setFrequency()
