@@ -49,10 +49,12 @@ struct Heartbeat : Module
   float getPhase();
   bool hasPeaked();
   void incrementTimer(float deltaTime);
+  bool processPulse(float deltaTime);
+  void resetPulse();
   void resetTimer();
-
   void setBpm(float bpmValue);
   void setFrequency();
+  void triggerPulse();
 };
 
 struct HeartbeatWidget : ModuleWidget

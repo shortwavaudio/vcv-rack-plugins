@@ -15,6 +15,16 @@ void Heartbeat::incrementTimer(float deltaTime)
   timer.process(deltaTime);
 }
 
+bool Heartbeat::processPulse(float deltaTime)
+{
+  return pulse.process(deltaTime);
+}
+
+void Heartbeat::resetPulse()
+{
+  pulse.reset();
+}
+
 void Heartbeat::resetTimer()
 {
   timer.reset();
@@ -30,6 +40,11 @@ void Heartbeat::setFrequency()
   frequency = 60.f / bpm;
 }
 
+void Heartbeat::triggerPulse()
+{
+  pulse.trigger();
+}
+
 void Heartbeat::process(const ProcessArgs &args)
 {
   isActive = !!params[PLAY_PARAM].getValue();
@@ -41,7 +56,7 @@ void Heartbeat::process(const ProcessArgs &args)
 
   if(playTrigger.process(params[PLAY_PARAM].getValue())) {
     resetTimer();
-    pulse.reset();
+    resetPulse();
   }
 
   if(isActive) {
@@ -50,11 +65,11 @@ void Heartbeat::process(const ProcessArgs &args)
   
   if(hasPeaked()) {
     resetTimer();
-    pulse.trigger();
+    triggerPulse();
   }
 
   outputs[PHASE_OUTPUT].setVoltage(isActive ? getPhase(): 0.f);
-  outputs[TRIGGER_OUTPUT].setVoltage(isActive ? pulse.process(args.sampleTime) ? 10.f : 0.f : 0.f);
+  outputs[TRIGGER_OUTPUT].setVoltage(isActive ? processPulse(args.sampleTime) ? 10.f : 0.f : 0.f);
   lights[PLAY_LIGHT].setBrightness(isActive ? 10.f: 0.f);
 }
 
