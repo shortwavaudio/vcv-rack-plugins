@@ -37,6 +37,7 @@ struct Heartbeat : Module
   }
 
   void process(const ProcessArgs &args) override;
+  void onSampleRateChange(const SampleRateChangeEvent& e) override;
 
   float bpm = 120.f;
   float frequency = 0.5f;

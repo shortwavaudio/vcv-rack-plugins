@@ -73,4 +73,14 @@ void Heartbeat::process(const ProcessArgs &args)
   lights[PLAY_LIGHT].setBrightness(isActive ? 10.f: 0.f);
 }
 
+void Heartbeat::onSampleRateChange(const SampleRateChangeEvent& e)
+{
+  resetTimer();
+  resetPulse();
+
+  outputs[PHASE_OUTPUT].setVoltage(0.f);
+  outputs[TRIGGER_OUTPUT].setVoltage(0.f);
+  lights[PLAY_LIGHT].setBrightness(isActive ? 10.f: 0.f);
+}
+
 Model *modelHeartbeat = createModel<Heartbeat, HeartbeatWidget>("Heartbeat");
