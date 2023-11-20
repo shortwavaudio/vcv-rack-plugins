@@ -29,7 +29,8 @@ struct Heartbeat : Module
 
   Heartbeat() {
     config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-    configParam(BPM_PARAM, 0.f, 240.f, bpm);
+    configParam(BPM_PARAM, 0.f, 240.f, bpm, "BPM", "bpm");
+    paramQuantities[BPM_PARAM]->snapEnabled = true;
   }
 
   void process(const ProcessArgs &args) override;

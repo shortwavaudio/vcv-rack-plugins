@@ -7,7 +7,7 @@ float Heartbeat::getPhase()
 
 bool Heartbeat::hasPeaked()
 {
-  return timer.getTime() >= frequency;
+  return timer.getTime() > frequency;
 }
 
 void Heartbeat::incrementTimer(float deltaTime)
