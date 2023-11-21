@@ -32,12 +32,12 @@ void Heartbeat::resetTimer()
 
 void Heartbeat::setBpm(float bpmValue)
 {
-  bpm = floorf(bpmValue);
+  bpm = roundf(bpmValue);
 }
 
 void Heartbeat::setFrequency()
 {
-  frequency = 60.f / bpm;
+  frequency = ShortwavAudio::utils::bpmToFreq(bpm);
 }
 
 void Heartbeat::triggerPulse()

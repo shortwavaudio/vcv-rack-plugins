@@ -1,6 +1,7 @@
 #pragma once
 
 #include "plugin.hpp"
+#include "helpers/utils.hpp"
 
 struct Heartbeat : Module
 {
