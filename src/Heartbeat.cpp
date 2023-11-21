@@ -17,12 +17,12 @@ void Heartbeat::incrementTimer(float deltaTime)
 
 bool Heartbeat::processPulse(float deltaTime)
 {
-  return pulse.process(deltaTime);
+  return clockPulse.process(deltaTime);
 }
 
 void Heartbeat::resetPulse()
 {
-  pulse.reset();
+  clockPulse.reset();
 }
 
 void Heartbeat::resetTimer()
@@ -42,25 +42,30 @@ void Heartbeat::setFrequency()
 
 void Heartbeat::triggerPulse()
 {
-  pulse.trigger();
+  clockPulse.trigger();
 }
 
 void Heartbeat::process(const ProcessArgs &args)
 {
   isActive = !!params[PLAY_PARAM].getValue();
+  isReset = resetTrigger.process(params[RESET_PARAM].getValue());
 
   if(params[BPM_PARAM].getValue() != bpm) {
     setBpm(params[BPM_PARAM].getValue());
     setFrequency();
   }
 
-  if(playTrigger.process(params[PLAY_PARAM].getValue())) {
+  if(isActive) {
+    incrementTimer(args.sampleTime);
+  }
+
+  if(playTrigger.process(params[PLAY_PARAM].getValue()) || isReset) {
     resetTimer();
     resetPulse();
   }
 
-  if(isActive) {
-    incrementTimer(args.sampleTime);
+  if(isReset) {
+    resetLightPulse.trigger(1e-1f);
   }
   
   if(hasPeaked()) {
@@ -71,6 +76,14 @@ void Heartbeat::process(const ProcessArgs &args)
   outputs[PHASE_OUTPUT].setVoltage(isActive ? getPhase(): 0.f);
   outputs[TRIGGER_OUTPUT].setVoltage(isActive ? processPulse(args.sampleTime) ? 10.f : 0.f : 0.f);
   lights[PLAY_LIGHT].setBrightnessSmooth(isActive ? 10.f: 0.f, args.sampleTime);
+
+  if(resetLightPulse.process(args.sampleTime)) {
+    lights[RESET_LIGHT].setBrightnessSmooth(10.f, args.sampleTime);
+    outputs[RESET_OUTPUT].setVoltage(10.f);
+  } else {
+    lights[RESET_LIGHT].setBrightnessSmooth(0.f, args.sampleTime);
+    outputs[RESET_OUTPUT].setVoltage(0.f);
+  }
 }
 
 void Heartbeat::onSampleRateChange(const SampleRateChangeEvent& e)

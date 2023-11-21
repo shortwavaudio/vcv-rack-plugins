@@ -5,7 +5,7 @@ using namespace rack;
 
 namespace ShortwavAudio
 {
-  namespace osc
+  struct osc
   {
     float blade(float p)
     {

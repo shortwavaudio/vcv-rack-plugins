@@ -9,6 +9,7 @@ struct Heartbeat : Module
   {
     BPM_PARAM,
     PLAY_PARAM,
+    RESET_PARAM,
     NUM_PARAMS
   };
 
@@ -20,6 +21,7 @@ struct Heartbeat : Module
   enum OutputIds
   {
     PHASE_OUTPUT,
+    RESET_OUTPUT,
     TRIGGER_OUTPUT,
     NUM_OUTPUTS
   };
@@ -27,6 +29,7 @@ struct Heartbeat : Module
   enum LightIds
   {
     PLAY_LIGHT,
+    RESET_LIGHT,
     NUM_LIGHTS
   };
 
@@ -36,8 +39,10 @@ struct Heartbeat : Module
     configParam(BPM_PARAM, 0.f, 240.f, bpm, "BPM", "bpm");
     paramQuantities[BPM_PARAM]->snapEnabled = true;
     configParam(PLAY_PARAM, 0.f, 1.f, 0.f, "ON/OFF");
+    configParam(RESET_PARAM, 0.f, 1.f, 0.f, "Reset");
 
     configOutput(PHASE_OUTPUT, "Phase");
+    configOutput(RESET_OUTPUT, "Reset");
     configOutput(TRIGGER_OUTPUT, "Clock");
   }
 
@@ -47,9 +52,10 @@ struct Heartbeat : Module
   float bpm = 120.f;
   float frequency = 0.5f;
   bool isActive = false;
+  bool isReset = false;
 
-  dsp::SchmittTrigger playTrigger;
-  dsp::PulseGenerator pulse;
+  dsp::SchmittTrigger playTrigger, resetTrigger;
+  dsp::PulseGenerator clockPulse, resetLightPulse;
   dsp::Timer timer;
 
   float getPhase();
@@ -77,6 +83,9 @@ struct HeartbeatWidget : ModuleWidget
 
     addParam(createParam<RoundSmallBlackKnob>(Vec(11.f, 50.f), module, Heartbeat::BPM_PARAM));
 
+    addParam(createLightParam<VCVLightButton<MediumSimpleLight<RedLight>>>(Vec(13.f, 100.f), module, Heartbeat::RESET_PARAM, Heartbeat::RESET_LIGHT));
+
+    addOutput(createOutput<PJ301MPort>(Vec(10.f, 250.f), module, Heartbeat::RESET_OUTPUT));
     addOutput(createOutput<PJ301MPort>(Vec(10.f, 280.f), module, Heartbeat::PHASE_OUTPUT));
     addOutput(createOutput<PJ301MPort>(Vec(10.f, 310.f), module, Heartbeat::TRIGGER_OUTPUT));
   }
