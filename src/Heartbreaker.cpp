@@ -7,8 +7,8 @@ void Heartbreaker::process(const ProcessArgs &args)
         
       heartbeatMessage *messagesFromModule = (heartbeatMessage *)(leftExpander.consumerMessage);
 
-      phase = messagesFromModule->phase;
-      frequency = messagesFromModule->frequency;
+      masterPhase = messagesFromModule->phase;
+      masterFrequency = messagesFromModule->frequency;
     }
 	}
 }
