@@ -73,7 +73,7 @@ struct Heartbeat : Module
   void setFrequency();
   void triggerPulse();
 
-  heartbeatMessage rightMessages[1][2];
+  heartbeatMessage rightMessages[2][3];
 };
 
 struct HeartbeatWidget : ModuleWidget

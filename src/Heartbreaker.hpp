@@ -44,10 +44,11 @@ struct Heartbreaker : Module
 
   void process(const ProcessArgs &args) override;
 
-  heartbeatMessage leftMessages[2][2];
+  heartbeatMessage leftMessages[2][3];
 
-  float masterPhase = 0.f;
+  bool masterActive = false;
   float masterFrequency = .5f;
+  float masterPhase = 0.f;
 };
 
 struct HeartbreakerWidget : ModuleWidget

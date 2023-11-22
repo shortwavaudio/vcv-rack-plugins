@@ -2,6 +2,7 @@
 
 struct heartbeatMessage
 {
-  float phase;
+  bool active;
   float frequency;
+  float phase;
 };

@@ -89,6 +89,7 @@ void Heartbeat::process(const ProcessArgs &args)
     if (rightExpander.module->model == modelHeartbreaker) {
       heartbeatMessage *messageToExpander = (heartbeatMessage*)(rightExpander.module->leftExpander.producerMessage);
 
+      messageToExpander->active = isActive;
       messageToExpander->frequency = frequency;
       messageToExpander->phase = timer.getTime();
 
