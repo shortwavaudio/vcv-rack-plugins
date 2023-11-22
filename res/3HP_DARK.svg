@@ -3,19 +3,27 @@
 <!-- Created with Vectornator (http://vectornator.io/) -->
 <svg height="100%" stroke-miterlimit="10" style="fill-rule:nonzero;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" version="1.1" viewBox="0 0 45 380" width="100%" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:vectornator="http://vectornator.io" xmlns:xlink="http://www.w3.org/1999/xlink">
 <defs>
-<path d="M0 0L360 0L360 0L360 380L360 380L0 380L0 380L0 0L0 0Z" id="Fill"/>
+<path d="M0-1.42109e-14L45-1.42109e-14L45-1.42109e-14L45 380L45 380L2.84217e-14 380L2.84217e-14 380L0-1.42109e-14L0-1.42109e-14Z" id="Fill"/>
+<linearGradient gradientTransform="matrix(1 0 0 1 0 0)" gradientUnits="userSpaceOnUse" id="LinearGradient" x1="0" x2="45" y1="190" y2="190">
+<stop offset="0" stop-color="#1a1a1a"/>
+<stop offset="1" stop-color="#111111"/>
+</linearGradient>
+<linearGradient gradientTransform="matrix(1 0 0 1 0 0)" gradientUnits="userSpaceOnUse" id="LinearGradient_2" x1="22.2398" x2="19.6603" y1="0.168373" y2="336.643">
+<stop offset="0" stop-color="#1a1a1a"/>
+<stop offset="1" stop-color="#111111"/>
+</linearGradient>
 </defs>
 <clipPath id="ArtboardFrame">
 <rect height="380" width="45" x="0" y="0"/>
 </clipPath>
 <g clip-path="url(#ArtboardFrame)" id="Untitled" vectornator:layerName="Untitled">
 <g opacity="1" vectornator:layerName="rect">
-<use fill="#171717" fill-rule="nonzero" opacity="1" stroke="none" vectornator:layerName="rect" xlink:href="#Fill"/>
+<use fill="url(#LinearGradient)" fill-rule="nonzero" opacity="1" stroke="none" vectornator:layerName="rect" xlink:href="#Fill"/>
 <clipPath clip-rule="nonzero" id="ClipPath">
 <use xlink:href="#Fill"/>
 </clipPath>
 <g clip-path="url(#ClipPath)">
-<path d="M0 0L360 0L360 0L360 380L360 380L0 380L0 380L0 0L0 0Z" fill="#171717" fill-rule="nonzero" opacity="1" stroke="none" vectornator:layerName="rect"/>
+<path d="M0-1.42109e-14L45-1.42109e-14L45-1.42109e-14L45 380L45 380L2.84217e-14 380L2.84217e-14 380L0-1.42109e-14L0-1.42109e-14Z" fill="url(#LinearGradient_2)" fill-rule="nonzero" opacity="1" stroke="none" vectornator:layerName="rect"/>
 </g>
 </g>
 <g opacity="1">
