@@ -84,6 +84,17 @@ void Heartbeat::process(const ProcessArgs &args)
     lights[RESET_LIGHT].setBrightnessSmooth(0.f, args.sampleTime);
     outputs[RESET_OUTPUT].setVoltage(0.f);
   }
+
+  if(rightExpander.module) {
+    if (rightExpander.module->model == modelHeartbreaker) {
+      heartbeatMessage *messageToExpander = (heartbeatMessage*)(rightExpander.module->leftExpander.producerMessage);
+
+      messageToExpander->frequency = frequency;
+      messageToExpander->phase = timer.getTime();
+
+      rightExpander.module->leftExpander.requestMessageFlip();
+    }
+  }
 }
 
 void Heartbeat::onSampleRateChange(const SampleRateChangeEvent& e)

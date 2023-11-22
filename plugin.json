@@ -22,6 +22,14 @@
       "tags": [
         "Clock generator"
       ]
+    },
+    {
+      "slug": "Heartbreaker",
+      "name": "Heartbreaker",
+      "description": "A clock diviver for heartbeat",
+      "tags": [
+        "Clock modulator"
+      ]
     }
   ]
 }

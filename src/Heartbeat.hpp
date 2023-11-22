@@ -2,6 +2,7 @@
 
 #include "plugin.hpp"
 #include "helpers/utils.hpp"
+#include "helpers/heartbeatMessage.hpp"
 
 struct Heartbeat : Module
 {
@@ -44,6 +45,10 @@ struct Heartbeat : Module
     configOutput(PHASE_OUTPUT, "Phase");
     configOutput(RESET_OUTPUT, "Reset");
     configOutput(TRIGGER_OUTPUT, "Clock");
+
+    // set the right expander message instances
+		rightExpander.producerMessage = rightMessages[0];
+		rightExpander.consumerMessage = rightMessages[1];
   }
 
   void process(const ProcessArgs &args) override;
@@ -67,6 +72,8 @@ struct Heartbeat : Module
   void setBpm(float bpmValue);
   void setFrequency();
   void triggerPulse();
+
+  heartbeatMessage rightMessages[1][2];
 };
 
 struct HeartbeatWidget : ModuleWidget
