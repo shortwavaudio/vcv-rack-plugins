@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Created with Vectornator (http://vectornator.io/) -->
+<svg height="100%" stroke-miterlimit="10" style="fill-rule:nonzero;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" version="1.1" viewBox="0 0 45 380" width="100%" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:vectornator="http://vectornator.io" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+<path d="M0 0L360 0L360 0L360 380L360 380L0 380L0 380L0 0L0 0Z" id="Fill"/>
+</defs>
+<clipPath id="ArtboardFrame">
+<rect height="380" width="45" x="0" y="0"/>
+</clipPath>
+<g clip-path="url(#ArtboardFrame)" id="Untitled" vectornator:layerName="Untitled">
+<g opacity="1" vectornator:layerName="rect">
+<use fill="#171717" fill-rule="nonzero" opacity="1" stroke="none" vectornator:layerName="rect" xlink:href="#Fill"/>
+<clipPath clip-rule="nonzero" id="ClipPath">
+<use xlink:href="#Fill"/>
+</clipPath>
+<g clip-path="url(#ClipPath)">
+<path d="M0 0L360 0L360 0L360 380L360 380L0 380L0 380L0 0L0 0Z" fill="#171717" fill-rule="nonzero" opacity="1" stroke="none" vectornator:layerName="rect"/>
+</g>
+</g>
+<g opacity="1">
+<path d="M20.8264 373.55L13.9619 373.55L7.09741 355.192L13.9619 355.192L20.8264 373.55Z" fill="#f3f3f3" fill-rule="nonzero" opacity="1" stroke="none" vectornator:layerName="path"/>
+<path d="M25.4559 373.55L23.0613 373.55L16.1968 355.192L23.0613 355.192L27.6829 367.552L25.4559 373.55Z" fill="#f3f3f3" fill-rule="nonzero" opacity="1" stroke="none" vectornator:layerName="path"/>
+<path d="M35.6449 364.659L39.185 355.192L32.3205 355.192L28.7813 364.657L35.6449 364.659Z" fill="#f3f3f3" fill-rule="nonzero" opacity="1" stroke="none" vectornator:layerName="path"/>
+<path d="M29.8485 352.703L23.3081 352.703C23.3081 352.703 23.2595 349.173 18.3062 349.173C13.353 349.173 13.4644 353.498 13.4644 353.498L6.92396 353.498C6.92396 353.498 6.67915 342.964 18.254 342.964C29.8289 342.964 29.8485 352.703 29.8485 352.703Z" fill="#f3f3f3" fill-rule="nonzero" opacity="1" stroke="none" vectornator:layerName="path"/>
+</g>
+</g>
+</svg>
