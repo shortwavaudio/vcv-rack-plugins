@@ -92,8 +92,8 @@ struct HeartbeatWidget : ModuleWidget
 
     addParam(createLightParam<VCVLightButton<MediumSimpleLight<RedLight>>>(Vec(13.f, 100.f), module, Heartbeat::RESET_PARAM, Heartbeat::RESET_LIGHT));
 
-    addOutput(createOutput<PJ301MPort>(Vec(10.f, 250.f), module, Heartbeat::RESET_OUTPUT));
-    addOutput(createOutput<PJ301MPort>(Vec(10.f, 280.f), module, Heartbeat::PHASE_OUTPUT));
-    addOutput(createOutput<PJ301MPort>(Vec(10.f, 310.f), module, Heartbeat::TRIGGER_OUTPUT));
+    addOutput(createOutput<PJ301MPort>(Vec(10.f, 230.f), module, Heartbeat::RESET_OUTPUT));
+    addOutput(createOutput<PJ301MPort>(Vec(10.f, 260.f), module, Heartbeat::PHASE_OUTPUT));
+    addOutput(createOutput<PJ301MPort>(Vec(10.f, 290.f), module, Heartbeat::TRIGGER_OUTPUT));
   }
 };

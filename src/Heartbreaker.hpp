@@ -9,6 +9,7 @@ struct Heartbreaker : Module
 {
   enum ParamIds
   {
+    ENUMS(DIV_PARAM, HEARTBREAKER_NUM_OUTPUTS),
     ENUMS(MULT_PARAM, HEARTBREAKER_NUM_OUTPUTS),
     NUM_PARAMS
   };
@@ -21,7 +22,8 @@ struct Heartbreaker : Module
 
   enum OutputIds
   {
-    ENUMS(TRIGGER_OUTPUT, HEARTBREAKER_NUM_OUTPUTS),
+    ENUMS(DIV_TRIGGER_OUTPUT, HEARTBREAKER_NUM_OUTPUTS),
+    ENUMS(MULT_TRIGGER_OUTPUT, HEARTBREAKER_NUM_OUTPUTS),
     NUM_OUTPUTS
   };
 
@@ -34,8 +36,14 @@ struct Heartbreaker : Module
     config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 
     for(int i = 0; i < HEARTBREAKER_NUM_OUTPUTS; ++i) {
-      configParam(MULT_PARAM + i, -64.f, 64.f, 0.f, "Multiplier");
+      configParam(DIV_PARAM + i, 1.f, 64.f, 1.f, "Divider");
+      configParam(MULT_PARAM + i, 1.f, 64.f, 1.f, "Multiplier");
+
+      paramQuantities[DIV_PARAM + i]->snapEnabled = true;
       paramQuantities[MULT_PARAM + i]->snapEnabled = true;
+
+      configOutput(DIV_TRIGGER_OUTPUT + i, "Divider");
+      configOutput(MULT_TRIGGER_OUTPUT + i, "Multiplier");
     }
       
     leftExpander.producerMessage = leftMessages[0];
@@ -56,14 +64,16 @@ struct HeartbreakerWidget : ModuleWidget
   HeartbreakerWidget(Heartbreaker *module)
   {
     setModule(module);
-    setPanel(APP->window->loadSvg(asset::plugin(pluginInstance, "res/3HP_DARK.svg")));
+    setPanel(APP->window->loadSvg(asset::plugin(pluginInstance, "res/6HP.svg")));
 
     addChild(createWidget<ScrewSilver>(Vec(0, 0)));
     addChild(createWidget<ScrewSilver>(Vec(box.size.x - 1 * RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
 
     for(int i = 0; i < HEARTBREAKER_NUM_OUTPUTS; ++i) {
-      addParam(createParam<RoundSmallBlackKnob>(Vec(11.f, 20.f + (60.f * i)), module, Heartbreaker::MULT_PARAM + i));
-      addOutput(createOutput<PJ301MPort>(Vec(10.f, 50.f + (60.f * i)), module, Heartbreaker::TRIGGER_OUTPUT + i));
+      addParam(createParam<RoundSmallBlackKnob>(Vec(11.f, 20.f + (60.f * i)), module, Heartbreaker::DIV_PARAM + i));
+      addParam(createParam<RoundSmallBlackKnob>(Vec(56.f, 20.f + (60.f * i)), module, Heartbreaker::MULT_PARAM + i));
+      addOutput(createOutput<PJ301MPort>(Vec(10.f, 50.f + (60.f * i)), module, Heartbreaker::DIV_TRIGGER_OUTPUT + i));
+      addOutput(createOutput<PJ301MPort>(Vec(55.f, 50.f + (60.f * i)), module, Heartbreaker::MULT_TRIGGER_OUTPUT + i));
     }
   }
 };
