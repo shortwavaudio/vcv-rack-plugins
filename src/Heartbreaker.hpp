@@ -33,6 +33,11 @@ struct Heartbreaker : Module
   Heartbreaker() {
     config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 
+    for(int i = 0; i < HEARTBREAKER_NUM_OUTPUTS; ++i) {
+      configParam(MULT_PARAM + i, -64.f, 64.f, 0.f, "Multiplier");
+      paramQuantities[MULT_PARAM + i]->snapEnabled = true;
+    }
+      
     leftExpander.producerMessage = leftMessages[0];
 		leftExpander.consumerMessage = leftMessages[1];	
   }
