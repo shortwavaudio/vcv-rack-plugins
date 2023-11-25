@@ -1,7 +1,7 @@
 #pragma once
 
 #include "plugin.hpp"
-#include "helpers/heartbeatMessage.hpp"
+#include "helpers/messages.hpp"
 
 const int HEARTBREAKER_NUM_OUTPUTS = 5;
 
@@ -57,6 +57,10 @@ struct Heartbreaker : Module
   bool masterActive = false;
   float masterFrequency = .5f;
   float masterPhase = 0.f;
+  bool synced = false;
+
+  dsp::Timer divTimers[HEARTBREAKER_NUM_OUTPUTS];
+  dsp::Timer multTimers[HEARTBREAKER_NUM_OUTPUTS];
 };
 
 struct HeartbreakerWidget : ModuleWidget

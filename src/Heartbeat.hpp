@@ -2,7 +2,7 @@
 
 #include "plugin.hpp"
 #include "helpers/utils.hpp"
-#include "helpers/heartbeatMessage.hpp"
+#include "helpers/messages.hpp"
 
 struct Heartbeat : Module
 {
