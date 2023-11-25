@@ -1,51 +1,51 @@
-#include "Heartbeat.hpp"
+#include "Heartbreak.hpp"
 
-float Heartbeat::getPhase()
+float Heartbreak::getPhase()
 {
   return timer.getTime() * (10.f / frequency);
 }
 
-bool Heartbeat::hasPeaked()
+bool Heartbreak::hasPeaked()
 {
   return timer.getTime() > frequency;
 }
 
-void Heartbeat::incrementTimer(float deltaTime)
+void Heartbreak::incrementTimer(float deltaTime)
 {
   timer.process(deltaTime);
 }
 
-bool Heartbeat::processPulse(float deltaTime)
+bool Heartbreak::processPulse(float deltaTime)
 {
   return clockPulse.process(deltaTime);
 }
 
-void Heartbeat::resetPulse()
+void Heartbreak::resetPulse()
 {
   clockPulse.reset();
 }
 
-void Heartbeat::resetTimer()
+void Heartbreak::resetTimer()
 {
   timer.reset();
 }
 
-void Heartbeat::setBpm(float bpmValue)
+void Heartbreak::setBpm(float bpmValue)
 {
   bpm = roundf(bpmValue);
 }
 
-void Heartbeat::setFrequency()
+void Heartbreak::setFrequency()
 {
   frequency = clockUtils.bpmToFreq(bpm);
 }
 
-void Heartbeat::triggerPulse()
+void Heartbreak::triggerPulse()
 {
   clockPulse.trigger();
 }
 
-void Heartbeat::process(const ProcessArgs &args)
+void Heartbreak::process(const ProcessArgs &args)
 {
   isActive = !!params[PLAY_PARAM].getValue();
   isReset = resetTrigger.process(params[RESET_PARAM].getValue());
@@ -84,21 +84,9 @@ void Heartbeat::process(const ProcessArgs &args)
     lights[RESET_LIGHT].setBrightnessSmooth(0.f, args.sampleTime);
     outputs[RESET_OUTPUT].setVoltage(0.f);
   }
-
-  if(rightExpander.module) {
-    if (rightExpander.module->model == modelHeartbreaker) {
-      heartbeatMessage *messageToExpander = (heartbeatMessage*)(rightExpander.module->leftExpander.producerMessage);
-
-      messageToExpander->active = isActive;
-      messageToExpander->frequency = frequency;
-      messageToExpander->phase = timer.getTime();
-
-      rightExpander.module->leftExpander.requestMessageFlip();
-    }
-  }
 }
 
-void Heartbeat::onSampleRateChange(const SampleRateChangeEvent& e)
+void Heartbreak::onSampleRateChange(const SampleRateChangeEvent& e)
 {
   resetTimer();
   resetPulse();
@@ -108,4 +96,4 @@ void Heartbeat::onSampleRateChange(const SampleRateChangeEvent& e)
   lights[PLAY_LIGHT].setBrightnessSmooth(isActive ? 10.f: 0.f, e.sampleTime);
 }
 
-Model *modelHeartbeat = createModel<Heartbeat, HeartbeatWidget>("Heartbeat");
+Model *modelHeartbreak = createModel<Heartbreak, HeartbreakWidget>("Heartbreak");

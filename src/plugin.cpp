@@ -11,6 +11,7 @@ void init(Plugin *p) {
 	// p->addModel(modelMyModule);
 	 p->addModel(modelBlank);
 	 p->addModel(modelHeartbeat);
+	 p->addModel(modelHeartbreak);
 	 p->addModel(modelHeartbreaker);
 
 	// Any other plugin initialization may go here.

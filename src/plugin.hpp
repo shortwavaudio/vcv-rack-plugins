@@ -9,4 +9,5 @@ extern Plugin *pluginInstance;
 // extern Model *modelMyModule;
 extern Model *modelBlank;
 extern Model *modelHeartbeat;
+extern Model *modelHeartbreak;
 extern Model *modelHeartbreaker;

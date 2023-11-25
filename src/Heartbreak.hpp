@@ -2,9 +2,8 @@
 
 #include "plugin.hpp"
 #include "helpers/utils.hpp"
-#include "helpers/messages.hpp"
 
-struct Heartbeat : Module
+struct Heartbreak : Module
 {
   enum ParamIds
   {
@@ -34,7 +33,7 @@ struct Heartbeat : Module
     NUM_LIGHTS
   };
 
-  Heartbeat() {
+  Heartbreak() {
     config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 
     configParam(BPM_PARAM, 0.f, 240.f, bpm, "BPM", "bpm");
@@ -45,10 +44,6 @@ struct Heartbeat : Module
     configOutput(PHASE_OUTPUT, "Phase");
     configOutput(RESET_OUTPUT, "Reset");
     configOutput(TRIGGER_OUTPUT, "Clock");
-
-    // set the right expander message instances
-		rightExpander.producerMessage = rightMessages[0];
-		rightExpander.consumerMessage = rightMessages[1];
   }
 
   void process(const ProcessArgs &args) override;
@@ -73,29 +68,27 @@ struct Heartbeat : Module
   void setFrequency();
   void triggerPulse();
 
-  heartbeatMessage rightMessages[2][3];
-
   ShortwavAudio::utils::clock clockUtils;
 };
 
-struct HeartbeatWidget : ModuleWidget
+struct HeartbreakWidget : ModuleWidget
 {
-  HeartbeatWidget(Heartbeat *module)
+  HeartbreakWidget(Heartbreak *module)
   {
     setModule(module);
-    setPanel(APP->window->loadSvg(asset::plugin(pluginInstance, "res/3HP_DARK.svg")));
+    setPanel(APP->window->loadSvg(asset::plugin(pluginInstance, "res/15HP.svg")));
 
     addChild(createWidget<ScrewSilver>(Vec(0, 0)));
     addChild(createWidget<ScrewSilver>(Vec(box.size.x - 1 * RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
 
-    addParam(createLightParam<VCVLightLatch<MediumSimpleLight<GreenLight>>>(Vec(13.f, 20.f), module, Heartbeat::PLAY_PARAM, Heartbeat::PLAY_LIGHT));
+    addParam(createLightParam<VCVLightLatch<MediumSimpleLight<GreenLight>>>(Vec(13.f, 20.f), module, Heartbreak::PLAY_PARAM, Heartbreak::PLAY_LIGHT));
 
-    addParam(createParam<RoundSmallBlackKnob>(Vec(11.f, 50.f), module, Heartbeat::BPM_PARAM));
+    addParam(createParam<RoundSmallBlackKnob>(Vec(11.f, 50.f), module, Heartbreak::BPM_PARAM));
 
-    addParam(createLightParam<VCVLightButton<MediumSimpleLight<RedLight>>>(Vec(13.f, 100.f), module, Heartbeat::RESET_PARAM, Heartbeat::RESET_LIGHT));
+    addParam(createLightParam<VCVLightButton<MediumSimpleLight<RedLight>>>(Vec(13.f, 100.f), module, Heartbreak::RESET_PARAM, Heartbreak::RESET_LIGHT));
 
-    addOutput(createOutput<PJ301MPort>(Vec(10.f, 230.f), module, Heartbeat::RESET_OUTPUT));
-    addOutput(createOutput<PJ301MPort>(Vec(10.f, 260.f), module, Heartbeat::PHASE_OUTPUT));
-    addOutput(createOutput<PJ301MPort>(Vec(10.f, 290.f), module, Heartbeat::TRIGGER_OUTPUT));
+    addOutput(createOutput<PJ301MPort>(Vec(10.f, 230.f), module, Heartbreak::RESET_OUTPUT));
+    addOutput(createOutput<PJ301MPort>(Vec(10.f, 260.f), module, Heartbreak::PHASE_OUTPUT));
+    addOutput(createOutput<PJ301MPort>(Vec(10.f, 290.f), module, Heartbreak::TRIGGER_OUTPUT));
   }
 };

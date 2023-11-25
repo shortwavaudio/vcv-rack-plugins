@@ -24,6 +24,14 @@
       ]
     },
     {
+      "slug": "Heartbreak",
+      "name": "Heartbreak",
+      "description": "A clock with dividers/multipliers",
+      "tags": [
+        "Clock generator"
+      ]
+    },
+    {
       "slug": "Heartbreaker",
       "name": "Heartbreaker",
       "description": "A clock divider/multiplier for heartbeat",

@@ -7,9 +7,11 @@ namespace ShortwavAudio
 {
   namespace utils
   {
-    float bpmToFreq(float bpm)
-    {
-      return 60.f / bpm;
-    }
+    struct clock {
+      float bpmToFreq(float bpm)
+      {
+        return 60.f / bpm;
+      }
+    };
   }
 }
