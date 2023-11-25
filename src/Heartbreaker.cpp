@@ -19,13 +19,18 @@ void Heartbreaker::process(const ProcessArgs &args)
     }
 
     if(synced) {
+      divTimers[i].process(args.sampleTime / roundf(params[DIV_PARAM + i].getValue()));
+      if(divTimers[i].getTime() > masterFrequency) {
+        divTimers[i].reset();
+      }
+
       multTimers[i].process(args.sampleTime * roundf(params[MULT_PARAM + i].getValue()));
       if(multTimers[i].getTime() > masterFrequency) {
         multTimers[i].reset();
       }
     }
 
-    outputs[DIV_TRIGGER_OUTPUT + i].setVoltage(params[DIV_PARAM + i].getValue());
+    outputs[DIV_TRIGGER_OUTPUT + i].setVoltage(divTimers[i].getTime() * (10.f / masterFrequency));
     outputs[MULT_TRIGGER_OUTPUT + i].setVoltage(multTimers[i].getTime() * (10.f / masterFrequency));
   }
 }
