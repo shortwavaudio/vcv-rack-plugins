@@ -4,6 +4,7 @@
 #include "helpers/messages.hpp"
 
 const int HEARTBREAKER_NUM_OUTPUTS = 5;
+const int HEARTBREAKER_MAX_MULT = 96;
 
 struct Heartbreaker : Module
 {
@@ -36,8 +37,8 @@ struct Heartbreaker : Module
     config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 
     for(int i = 0; i < HEARTBREAKER_NUM_OUTPUTS; ++i) {
-      configParam(DIV_PARAM + i, 1.f, 64.f, 1.f, "Divider");
-      configParam(MULT_PARAM + i, 1.f, 64.f, 1.f, "Multiplier");
+      configParam(DIV_PARAM + i, 1.f, HEARTBREAKER_MAX_MULT, 1.f, "Divider");
+      configParam(MULT_PARAM + i, 1.f, HEARTBREAKER_MAX_MULT, 1.f, "Multiplier");
 
       paramQuantities[DIV_PARAM + i]->snapEnabled = true;
       paramQuantities[MULT_PARAM + i]->snapEnabled = true;
